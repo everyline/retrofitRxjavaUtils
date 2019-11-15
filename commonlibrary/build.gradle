@@ -1,0 +1,106 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.supportLibVersion
+
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+
+    api 'com.android.support:multidex:1.0.2'
+
+    api "com.github.bumptech.glide:glide:$glideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
+
+    api 'androidx.recyclerview:recyclerview:1.1.0-beta03'
+    api "com.google.code.gson:gson:$gsonVersion"
+    //注解
+    api "com.jakewharton:butterknife:$butterknifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeVersion"
+    // Rx
+    api "io.reactivex.rxjava2:rxjava:$rxjavaVersion"
+    api "io.reactivex.rxjava2:rxandroid:$rxandroidVersion"
+    //retrofit
+    api "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    api "com.squareup.okhttp3:okhttp:$okhttpVersion"
+    api "com.squareup.retrofit2:converter-gson:$converterGsonVersion"
+    api "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:$retrofit2AdapterVersion"
+    api "com.squareup.okhttp3:logging-interceptor:$interceptorVersion"
+    api "com.trello.rxlifecycle2:rxlifecycle-components:$rxlifecycleVersion"
+
+    //滚轮
+    api 'com.contrarywind:Android-PickerView:4.1.8'
+
+    //adapter 库
+    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.49'
+
+    //权限库
+    api 'com.github.tbruyelle:rxpermissions:0.10.2'
+    //沉浸式
+    api 'com.jaeger.statusbarutil:library:1.5.1'
+
+    //适配库
+    api 'me.jessyan:autosize:1.1.2'
+    //工具包
+    api 'com.blankj:utilcode:1.25.4'
+    //titlebar
+    api 'com.hjq:titlebar:6.0'
+
+    // tablayout
+    api 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+    //轮播图
+    api 'com.youth.banner:banner:1.4.10'
+    //bugly
+    api 'com.tencent.bugly:crashreport_upgrade:latest.release'
+
+    //图片选择
+    api 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.4'
+    //
+    api 'com.jakewharton.rxbinding3:rxbinding:3.0.0'
+
+    //rxbus
+    api "com.blankj:rxbus:1.6"
+
+    api('com.qmuiteam:qmui:1.4.0') {
+        transitive = false
+    }
+    api('com.alibaba.android:vlayout:1.2.31@aar') {
+        transitive = true
+    }
+    api('com.alibaba.android:ultraviewpager:1.0.7.8@aar') {
+        transitive = true
+    }
+    api 'androidx.cardview:cardview:1.0.0'
+    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'
+    api 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0'
+}
